@@ -12,10 +12,11 @@ Group:		Libraries/Python
 Source0:	http://www.jorendorff.com/articles/python/path/%{module}.py
 # NoSource0-md5: 9ae93736f9845827aed23bcfa0aaa6ea
 URL:		http://www.jorendorff.com/articles/python/path/
+BuildRequires:	python-modules >= 2.2
+BuildRequires:	rpm-perlprov
 Requires:	python >= 2.2
-BuildRequires:	python >= 2.2
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This module provides a single class that wraps the functionality in
@@ -32,8 +33,8 @@ cp -f %{SOURCE0} .
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{py_sitescriptdir}
 
-install -d $RPM_BUILD_ROOT%{py_sitescriptdir}/
 install %{SOURCE0} $RPM_BUILD_ROOT%{py_sitescriptdir}
 
 %py_comp $RPM_BUILD_ROOT%{py_sitescriptdir}/
