@@ -28,8 +28,6 @@ Modu³ ten udostêpnia pojedyncz± klasê bêd±c± wrapperem na
 funkcjonalno¶æ modu³u os.path.
 
 %prep
-%setup -q -c -T
-cp -f %{SOURCE0} .
 
 %install
 rm -rf $RPM_BUILD_ROOT
