@@ -1,6 +1,6 @@
 
 %include	/usr/lib/rpm/macros.python
-%define 	module path
+%define 	module	path
 
 Summary:	Functionality wrapper of the os.path module
 Summary(pl):	Wraper funkcjonalno¶ci modu³u os.path
