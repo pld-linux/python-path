@@ -5,12 +5,13 @@ Summary:	Functionality wrapper of the os.path module
 Summary(pl):	Wraper funkcjonalno¶ci modu³u os.path
 Name:		python-path
 Version:	2.0.4
-Release:	1
+Release:	2
 License:	Custom (do, what you want)
 Group:		Libraries/Python
 Source0:	http://www.jorendorff.com/articles/python/path/%{module}.py
 # NoSource0-md5: 9ae93736f9845827aed23bcfa0aaa6ea
 URL:		http://www.jorendorff.com/articles/python/path/
+BuildRequires:	python
 BuildRequires:	python-modules >= 2.2
 BuildRequires:	rpm-perlprov
 Requires:	python >= 2.2
