@@ -2,7 +2,7 @@
 %define 	module	path
 
 Summary:	Functionality wrapper of the os.path module
-Summary(pl):	Wraper funkcjonalno¶ci modu³u os.path
+Summary(pl.UTF-8):   Wraper funkcjonalnoÅ›ci moduÅ‚u os.path
 Name:		python-path
 Version:	2.0.4
 Release:	2
@@ -23,9 +23,9 @@ This module provides a single class that wraps the functionality in
 the os.path module. You wouldn't think that would be so helpful, but
 in practice I find it much more pleasant to write and to read.
 
-%description -l pl
-Modu³ ten udostêpnia pojedyncz± klasê bêd±c± wrapperem na
-funkcjonalno¶æ modu³u os.path.
+%description -l pl.UTF-8
+ModuÅ‚ ten udostÄ™pnia pojedynczÄ… klasÄ™ bÄ™dÄ…cÄ… wrapperem na
+funkcjonalnoÅ›Ä‡ moduÅ‚u os.path.
 
 %prep
 
