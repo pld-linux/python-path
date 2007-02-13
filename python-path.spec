@@ -2,7 +2,7 @@
 %define 	module	path
 
 Summary:	Functionality wrapper of the os.path module
-Summary(pl.UTF-8):   Wraper funkcjonalności modułu os.path
+Summary(pl.UTF-8):	Wraper funkcjonalności modułu os.path
 Name:		python-path
 Version:	2.0.4
 Release:	2
