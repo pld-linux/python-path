@@ -5,7 +5,7 @@ Summary:	Functionality wrapper of the os.path module
 Summary(pl.UTF-8):	Wraper funkcjonalności modułu os.path
 Name:		python-path
 Version:	2.0.4
-Release:	3
+Release:	4
 License:	Custom (do, what you want)
 Group:		Libraries/Python
 Source0:	http://www.jorendorff.com/articles/python/path/%{module}.py
