@@ -14,6 +14,7 @@ URL:		http://www.jorendorff.com/articles/python/path/
 BuildRequires:	python
 BuildRequires:	python-modules >= 2.2
 BuildRequires:	rpm-perlprov
+BuildRequires:	rpm-pythonprov
 Requires:	python >= 2.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
