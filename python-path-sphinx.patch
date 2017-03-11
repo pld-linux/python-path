@@ -1,0 +1,11 @@
+--- path.py-10.1/CHANGES.rst.orig	2017-01-23 13:23:35.000000000 +0100
++++ path.py-10.1/CHANGES.rst	2017-03-11 16:24:13.470127210 +0100
+@@ -39,7 +39,7 @@
+ ---
+ 
+ - Refreshed project metadata based on `jaraco's project
+-  skeleton <https://github.com/jaraco/skeleton/tree/spaces>_.
++  skeleton <https://github.com/jaraco/skeleton/tree/spaces>`_.
+ - Releases are now automatically published via Travis-CI.
+ - #111: More aggressively trap errors when importing
+   ``pkg_resources``.
