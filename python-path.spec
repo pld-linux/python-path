@@ -110,7 +110,9 @@ LC_ALL=C.UTF-8 %{__python3} -m pytest test_path.py
 
 %if %{with doc}
 install -d docs/_static
-%{__make} -C docs html
+# disable warnings (-W in SPHINXOPTS) to ignore objects.inv fetching error on builders
+%{__make} -C docs html \
+	SPHINXOPTS=
 %endif
 
 %install
