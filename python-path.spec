@@ -9,7 +9,7 @@ Summary:	Python 2 module wrapper for os.path
 Summary(pl.UTF-8):	Moduł Pythona 2 obudowujący os.path
 Name:		python-path
 Version:	11.0.1
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/path-py/
