@@ -8,14 +8,14 @@
 Summary:	Python 2 module wrapper for os.path
 Summary(pl.UTF-8):	Moduł Pythona 2 obudowujący os.path
 Name:		python-path
-Version:	11.0.1
-Release:	2
+# keep 11.x here for python2 support
+Version:	11.5.2
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/path-py/
 Source0:	https://files.pythonhosted.org/packages/source/p/path.py/path.py-%{version}.tar.gz
-# Source0-md5:	de65181c0efc12efc34d1ff1a0b1edfe
-Patch0:		%{name}-sphinx.patch
+# Source0-md5:	f7330990e70574d917630c157eeb639a
 URL:		https://github.com/jaraco/path.py
 %if %{with tests} && %(locale -a | grep -q '^C\.utf8$'; echo $?)
 BuildRequires:	glibc-localedb-all
@@ -23,31 +23,39 @@ BuildRequires:	glibc-localedb-all
 %if %{with python2}
 BuildRequires:	python >= 1:2.7
 BuildRequires:	python-modules >= 1:2.7
-BuildRequires:	python-setuptools
+BuildRequires:	python-setuptools >= 1:31.0.1
 BuildRequires:	python-setuptools_scm >= 1.15.0
 %if %{with tests}
 BuildRequires:	python-appdirs
-BuildRequires:	python-pytest >= 2.8
+BuildRequires:	python-backports.os
+BuildRequires:	python-importlib_metadata >= 0.5
+BuildRequires:	python-packaging
+BuildRequires:	python-pygments
+BuildRequires:	python-pytest >= 3.5
 BuildRequires:	python-pytest-flake8
 %endif
 %endif
 %if %{with python3}
 BuildRequires:	python3 >= 1:3.4
 BuildRequires:	python3-modules >= 1:3.4
-BuildRequires:	python3-setuptools
+BuildRequires:	python3-setuptools >= 1:31.0.1
 BuildRequires:	python3-setuptools_scm >= 1.15.0
 %if %{with tests}
 BuildRequires:	python3-appdirs
-BuildRequires:	python3-pytest >= 2.8
+BuildRequires:	python3-importlib_metadata >= 0.5
+BuildRequires:	python3-packaging
+BuildRequires:	python3-pygments
+BuildRequires:	python3-pytest >= 3.5
 BuildRequires:	python3-pytest-flake8
 %endif
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-BuildRequires:	sphinx-pdg-3
-BuildRequires:	python3-jaraco.packaging >= 3.2
-BuildRequires:	python3-rst.linker >= 1.9
+BuildRequires:	sphinx-pdg-2
+BuildRequires:	python-alabaster
+BuildRequires:	python-jaraco.packaging >= 3.2
+BuildRequires:	python-rst.linker >= 1.9
 %endif
 Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
@@ -92,7 +100,6 @@ Dokumentacja modułu Pythona path.py.
 
 %prep
 %setup -q -n path.py-%{version}
-%patch0 -p1
 
 %build
 %if %{with python2}
@@ -100,6 +107,8 @@ Dokumentacja modułu Pythona path.py.
 
 %if %{with tests}
 LC_ALL=C.UTF-8 \
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTEST_PLUGINS="pytest_flake8" \
 %{__python} -m pytest test_path.py
 %endif
 %endif
@@ -109,6 +118,8 @@ LC_ALL=C.UTF-8 \
 
 %if %{with tests}
 LC_ALL=C.UTF-8 \
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTEST_PLUGINS="pytest_flake8" \
 %{__python3} -m pytest test_path.py
 %endif
 %endif
@@ -116,7 +127,7 @@ LC_ALL=C.UTF-8 \
 %if %{with doc}
 # disable warnings (-W in SPHINXOPTS) to ignore objects.inv fetching error on builders
 %{__make} -C docs html \
-	SPHINXBUILD=sphinx-build-3 \
+	SPHINXBUILD=sphinx-build-2 \
 	SPHINXOPTS=
 %endif
 
@@ -127,14 +138,10 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 %py_postclean
-%{__rm} $RPM_BUILD_ROOT%{py_sitescriptdir}/test_path.py*
 %endif
 
 %if %{with python3}
 %py3_install
-
-%{__rm} $RPM_BUILD_ROOT%{py3_sitescriptdir}/test_path.py
-%{__rm} $RPM_BUILD_ROOT%{py3_sitescriptdir}/__pycache__/test_path.*
 %endif
 
 %clean
@@ -143,7 +150,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.rst README.rst
+%doc CHANGES.rst LICENSE README.rst
 %{py_sitescriptdir}/path.py[co]
 %{py_sitescriptdir}/path.py-%{version}-py*.egg-info
 %endif
@@ -151,7 +158,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-path
 %defattr(644,root,root,755)
-%doc CHANGES.rst README.rst
+%doc CHANGES.rst LICENSE README.rst
 %{py3_sitescriptdir}/path.py
 %{py3_sitescriptdir}/__pycache__/path.cpython-*.py[co]
 %{py3_sitescriptdir}/path.py-%{version}-py*.egg-info
