@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Moduł Pythona 2 obudowujący os.path
 Name:		python-path
 # keep 11.x here for python2 support
 Version:	11.5.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/path-py/
